@@ -43,6 +43,7 @@ namespace ProjPTCC
             this.btnFechar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
+            this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +67,8 @@ namespace ProjPTCC
             this.logoToolStripMenuItem,
             this.inicioToolStripMenuItem,
             this.cadastroToolStripMenuItem,
-            this.estoqueToolStripMenuItem});
+            this.estoqueToolStripMenuItem,
+            this.editarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1034, 24);
@@ -196,6 +198,13 @@ namespace ProjPTCC
             this.txtId.Text = "ID";
             this.txtId.Leave += new System.EventHandler(this.txtId_Leave);
             // 
+            // editarToolStripMenuItem
+            // 
+            this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.editarToolStripMenuItem.Text = "Editar";
+            this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
+            // 
             // Cadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -238,5 +247,6 @@ namespace ProjPTCC
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
     }
 }

@@ -172,5 +172,12 @@ namespace ProjPTCC
             txtId.Text = valor;
             txtId.ForeColor = Color.Black;
         }
+
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Editar editar = new Editar();
+            editar.Show();
+            this.Hide();
+        }
     }
 }

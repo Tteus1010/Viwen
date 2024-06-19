@@ -40,6 +40,7 @@ namespace ProjPTCC
             this.listaProd = new System.Windows.Forms.ListView();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.btnBusca = new System.Windows.Forms.Button();
+            this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +64,8 @@ namespace ProjPTCC
             this.logoToolStripMenuItem,
             this.inicioToolStripMenuItem,
             this.cadastroToolStripMenuItem,
-            this.estoqueToolStripMenuItem});
+            this.estoqueToolStripMenuItem,
+            this.editarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1034, 24);
@@ -141,6 +143,13 @@ namespace ProjPTCC
             this.btnBusca.UseVisualStyleBackColor = true;
             this.btnBusca.Click += new System.EventHandler(this.btnBusca_Click);
             // 
+            // editarToolStripMenuItem
+            // 
+            this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.editarToolStripMenuItem.Text = "Editar";
+            this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
+            // 
             // Estoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,5 +186,6 @@ namespace ProjPTCC
         private System.Windows.Forms.ListView listaProd;
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.Button btnBusca;
+        private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
     }
 }

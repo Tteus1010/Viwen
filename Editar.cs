@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,13 +12,11 @@ using System.Windows.Forms;
 
 namespace ProjPTCC
 {
-    public partial class Estoque : Form
+    public partial class Editar : Form
     {
-
-
         MySqlConnection conexao;
 
-        public Estoque()
+        public Editar()
         {
             InitializeComponent();
 
@@ -36,9 +35,9 @@ namespace ProjPTCC
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Inicio inicio = new Inicio();
-            inicio.Show();
-            this.Hide();
+                Inicio inicio = new Inicio();
+                inicio.Show();
+                this.Hide();
         }
 
         private void cadastroToolStripMenuItem_Click(object sender, EventArgs e)
@@ -55,22 +54,22 @@ namespace ProjPTCC
             this.Hide();
         }
 
-        private void btnFechar_Click(object sender, EventArgs e)
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            telaLogin login = new telaLogin();
-            login.Show();
+            Editar editar = new Editar();
+            editar.Show();
             this.Hide();
         }
 
-        private void Estoque_Load(object sender, EventArgs e)
+        private void Editar_Load(object sender, EventArgs e)
         {
             try
             {
                 string strConexao = "server=localhost; uid=root; pwd=12345678; database=viwen";
                 conexao = new MySqlConnection(strConexao);
 
-                string src = "'%" + txtPesquisa.Text + "%'";
-                string sql = "select * from produto where nome_prod like" + src;
+                string src = "'%" + txtId.Text + "%'";
+                string sql = "select * from produto where id_prod like" + src;
 
                 MySqlCommand command = new MySqlCommand(sql, conexao);
 
@@ -113,21 +112,22 @@ namespace ProjPTCC
 
         private void btnBusca_Click(object sender, EventArgs e)
         {
+            var btnclick = true;
             try
             {
                 string strConexao = "server=localhost; uid=root; pwd=12345678; database=viwen";
-                conexao = new MySqlConnection(strConexao);                           
+                conexao = new MySqlConnection(strConexao);
 
-                string src = "'%" + txtPesquisa.Text + "%'";
-                string sql = "select * from produto where nome_prod like" + src 
-                    +"or id_prod like" + src 
-                    +"or desc_prod like" + src;
+                string src = "'%" + txtId.Text + "%'";
+                string sql = "select * from produto where nome_prod like" + src
+                    + "or id_prod like" + src
+                    + "or desc_prod like" + src;
 
                 MySqlCommand command = new MySqlCommand(sql, conexao);
 
                 conexao.Open();
-                    
-                MySqlDataReader reader = command.ExecuteReader();    
+
+                MySqlDataReader reader = command.ExecuteReader();
 
                 listaProd.Items.Clear();
 
@@ -147,9 +147,41 @@ namespace ProjPTCC
 
                     listaProd.Items.Add(linha_lv);
                 }
-                
+                if (btnclick == true)
+                {
+                    int codigo = 0;
+                    string id;
+                    string nome;
+                    string valor;
+                    string qtd;
+                    string desc;
 
+                    try
+                    {
+                        codigo = reader.GetInt32(0);
+                        nome = reader.GetString(1);
+                        valor = reader.GetString(2);
+                        qtd = reader.GetString(3);
+                        desc = reader.GetString(4);
 
+                        id = (codigo).ToString();
+
+                        txtId.Text = id;
+                        txtId.ForeColor = Color.Black;
+                        txtNomeProd.Text = nome;
+                        txtNomeProd.ForeColor = Color.Black;
+                        txtQtdProd.Text = qtd;
+                        txtQtdProd.ForeColor = Color.Black;
+                        txtValorProd.Text = valor;
+                        txtValorProd.ForeColor = Color.Black;
+                        txtDescProd.Text = desc;
+                        txtDescProd.ForeColor = Color.Black;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
             }
 
             catch (Exception ex)
@@ -160,13 +192,52 @@ namespace ProjPTCC
             {
                 conexao.Close();
             }
+            
+            
         }
 
-        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void txtId_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Editar editar = new Editar();
-            editar.Show();
-            this.Hide();
+            if(!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            string id = txtId.Text;
+            Convert.ToInt32(id);
+            string nome = txtNomeProd.Text;
+            string qtd = txtQtdProd.Text;
+            string valor = txtValorProd.Text;
+            string desc = txtDescProd.Text;
+
+            
+
+            try
+            {
+                string strConexao = "server=localhost; uid=root; pwd=12345678; database=viwen";
+                conexao = new MySqlConnection(strConexao);
+
+                string sql = "UPDATE produto " +
+                    "SET nome_prod = '" + nome + "', " +
+                    "qtd_prod = '"+ qtd + "', " +
+                    "vl_prod = '" + valor + "', " +
+                    "desc_prod = '" + desc + "' " +
+                    "WHERE id_prod = " + id ;
+
+                conexao.Open();
+
+                MySqlCommand command = new MySqlCommand(sql, conexao);
+
+                
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
+

@@ -59,7 +59,7 @@ namespace ProjPTCC
             this.btnVoltar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(523, 440);
+            this.btnVoltar.Location = new System.Drawing.Point(405, 429);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(116, 32);
             this.btnVoltar.TabIndex = 4;
@@ -73,7 +73,7 @@ namespace ProjPTCC
             this.bntCadastrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.bntCadastrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bntCadastrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntCadastrar.Location = new System.Drawing.Point(405, 440);
+            this.bntCadastrar.Location = new System.Drawing.Point(523, 429);
             this.bntCadastrar.Name = "bntCadastrar";
             this.bntCadastrar.Size = new System.Drawing.Size(116, 32);
             this.bntCadastrar.TabIndex = 5;
@@ -97,11 +97,11 @@ namespace ProjPTCC
             // 
             this.txtSenhaCad.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtSenhaCad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.txtSenhaCad.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSenhaCad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenhaCad.ForeColor = System.Drawing.Color.DarkGray;
             this.txtSenhaCad.Location = new System.Drawing.Point(405, 391);
             this.txtSenhaCad.Name = "txtSenhaCad";
-            this.txtSenhaCad.Size = new System.Drawing.Size(234, 32);
+            this.txtSenhaCad.Size = new System.Drawing.Size(234, 26);
             this.txtSenhaCad.TabIndex = 7;
             this.txtSenhaCad.Text = "Senha";
             this.txtSenhaCad.Enter += new System.EventHandler(this.txtSenhaCad_Enter);
@@ -111,11 +111,11 @@ namespace ProjPTCC
             // 
             this.txtLoginCad.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtLoginCad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.txtLoginCad.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoginCad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLoginCad.ForeColor = System.Drawing.Color.DarkGray;
             this.txtLoginCad.Location = new System.Drawing.Point(405, 353);
             this.txtLoginCad.Name = "txtLoginCad";
-            this.txtLoginCad.Size = new System.Drawing.Size(234, 32);
+            this.txtLoginCad.Size = new System.Drawing.Size(234, 26);
             this.txtLoginCad.TabIndex = 8;
             this.txtLoginCad.Text = "Nome Usuário";
             this.txtLoginCad.Enter += new System.EventHandler(this.txtLoginCad_Enter);

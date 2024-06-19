@@ -58,5 +58,12 @@ namespace ProjPTCC
             estoque.Show();
             this.Hide();
         }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Editar editar = new Editar();
+            editar.Show();
+            this.Hide();
+        }
     }
 }

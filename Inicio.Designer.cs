@@ -34,6 +34,7 @@ namespace ProjPTCC
             this.btnFechar = new System.Windows.Forms.Button();
             this.btnCadAt = new System.Windows.Forms.Button();
             this.btnConsAt = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +68,7 @@ namespace ProjPTCC
             // 
             // btnCadAt
             // 
-            this.btnCadAt.Location = new System.Drawing.Point(313, 231);
+            this.btnCadAt.Location = new System.Drawing.Point(411, 231);
             this.btnCadAt.Name = "btnCadAt";
             this.btnCadAt.Size = new System.Drawing.Size(170, 170);
             this.btnCadAt.TabIndex = 3;
@@ -77,7 +78,7 @@ namespace ProjPTCC
             // 
             // btnConsAt
             // 
-            this.btnConsAt.Location = new System.Drawing.Point(527, 231);
+            this.btnConsAt.Location = new System.Drawing.Point(670, 231);
             this.btnConsAt.Name = "btnConsAt";
             this.btnConsAt.Size = new System.Drawing.Size(170, 170);
             this.btnConsAt.TabIndex = 4;
@@ -85,11 +86,22 @@ namespace ProjPTCC
             this.btnConsAt.UseVisualStyleBackColor = true;
             this.btnConsAt.Click += new System.EventHandler(this.btnConsAt_Click);
             // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(165, 231);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(170, 170);
+            this.btnEditar.TabIndex = 5;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 536);
+            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnConsAt);
             this.Controls.Add(this.btnCadAt);
             this.Controls.Add(this.btnFechar);
@@ -108,5 +120,6 @@ namespace ProjPTCC
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Button btnCadAt;
         private System.Windows.Forms.Button btnConsAt;
+        private System.Windows.Forms.Button btnEditar;
     }
 }
