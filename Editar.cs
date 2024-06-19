@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Google.Protobuf.WellKnownTypes;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -188,10 +190,8 @@ namespace ProjPTCC
             {
                 MessageBox.Show(ex.Message);
             }
-            finally
-            {
-                conexao.Close();
-            }
+
+            conexao.Close();
             
             
         }
@@ -206,37 +206,60 @@ namespace ProjPTCC
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            string id = txtId.Text;
-            Convert.ToInt32(id);
-            string nome = txtNomeProd.Text;
-            string qtd = txtQtdProd.Text;
-            string valor = txtValorProd.Text;
-            string desc = txtDescProd.Text;
-
-            
+            string src =  txtId.Text;
+            string nome = "'" + txtNomeProd.Text + "'";
+            string qtd = "'" + txtQtdProd.Text + "'";
+            string valor = "'" + txtValorProd.Text + "'";
+            string desc = "'" + txtDescProd.Text + "'";
 
             try
             {
                 string strConexao = "server=localhost; uid=root; pwd=12345678; database=viwen";
                 conexao = new MySqlConnection(strConexao);
-
-                string sql = "UPDATE produto " +
-                    "SET nome_prod = '" + nome + "', " +
-                    "qtd_prod = '"+ qtd + "', " +
-                    "vl_prod = '" + valor + "', " +
-                    "desc_prod = '" + desc + "' " +
-                    "WHERE id_prod = " + id ;
-
-                conexao.Open();
+                string sql = "UPDATE produto SET nome_prod = " + nome + ", qtd_prod = "+ qtd + ", vl_prod = " + valor + ", desc_prod = " + desc + " WHERE id_prod = " + src;
 
                 MySqlCommand command = new MySqlCommand(sql, conexao);
 
-                
+                conexao.Open();
+               
             }
             catch (Exception ex) 
             {
                 MessageBox.Show(ex.Message);
             }
+
+            conexao.Close();
+
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            string src = "'%" + txtId.Text + "%'";
+
+            try
+            {
+                string strConexao = "server=localhost; uid=root; pwd=12345678; database=viwen";
+                conexao = new MySqlConnection(strConexao);
+                string sql = "delete from produtos where " + src ;
+
+                MySqlCommand command = new MySqlCommand(sql, conexao);
+
+                conexao.Open();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            conexao.Close();
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            telaLogin login = new telaLogin();
+            login.Show();
+            this.Close();
         }
     }
 }
