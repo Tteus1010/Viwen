@@ -30,9 +30,11 @@ namespace ProjPTCC
 
             listaProd.Columns.Add("ID", 30, HorizontalAlignment.Left);
             listaProd.Columns.Add("Nome", 150, HorizontalAlignment.Left);
-            listaProd.Columns.Add("Quantidade", 150, HorizontalAlignment.Left);
+            listaProd.Columns.Add("Cor", 150, HorizontalAlignment.Left);
+            listaProd.Columns.Add("Tamanho", 150, HorizontalAlignment.Left);
             listaProd.Columns.Add("Valor", 150, HorizontalAlignment.Left);
-            listaProd.Columns.Add("Descrição", 300, HorizontalAlignment.Left);
+            listaProd.Columns.Add("Marca", 150, HorizontalAlignment.Left);
+            listaProd.Columns.Add("Quantidade", 150, HorizontalAlignment.Left);
         }
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -67,11 +69,11 @@ namespace ProjPTCC
         {
             try
             {
-                string strConexao = "server=localhost; uid=root; pwd=12345678; database=viwen";
+                string strConexao = "server=localhost; uid=root; pwd=123456789; database=viewen_db";
                 conexao = new MySqlConnection(strConexao);
 
                 string src = "'%" + txtId.Text + "%'";
-                string sql = "select * from produto where id_prod like" + src;
+                string sql = "select * from produtos where id like" + src;
 
                 MySqlCommand command = new MySqlCommand(sql, conexao);
 
@@ -89,7 +91,9 @@ namespace ProjPTCC
                         reader.GetString(1),
                         reader.GetString(2),
                         reader.GetString(3),
-                        reader.GetString(4)
+                        Convert.ToString((decimal)reader.GetDecimal(4)),
+                        reader.GetString(5),
+                        Convert.ToString((int)reader.GetInt32(6))
                     };
 
 
@@ -97,19 +101,14 @@ namespace ProjPTCC
 
                     listaProd.Items.Add(linha_lv);
                 }
-
-
-
             }
 
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            finally
-            {
-                conexao.Close();
-            }
+            conexao.Close();
+
         }
 
         private void btnBusca_Click(object sender, EventArgs e)
@@ -117,13 +116,12 @@ namespace ProjPTCC
             var btnclick = true;
             try
             {
-                string strConexao = "server=localhost; uid=root; pwd=12345678; database=viwen";
+                string strConexao = "server=localhost; uid=root; pwd=123456789; database=viewen_db";
                 conexao = new MySqlConnection(strConexao);
 
-                string src = "'%" + txtId.Text + "%'";
-                string sql = "select * from produto where nome_prod like" + src
-                    + "or id_prod like" + src
-                    + "or desc_prod like" + src;
+                string src = txtId.Text;
+                Convert.ToInt32 (src);
+                string sql = "select * from produtos where id like " + src;
 
                 MySqlCommand command = new MySqlCommand(sql, conexao);
 
@@ -141,7 +139,9 @@ namespace ProjPTCC
                         reader.GetString(1),
                         reader.GetString(2),
                         reader.GetString(3),
-                        reader.GetString(4)
+                        Convert.ToString((decimal)reader.GetDecimal(4)),
+                        reader.GetString(5),
+                        Convert.ToString((int)reader.GetInt32(6)),
                     };
 
 
@@ -152,32 +152,44 @@ namespace ProjPTCC
                 if (btnclick == true)
                 {
                     int codigo = 0;
+                    int qtd = 0;
+                    decimal preco = 0;
                     string id;
                     string nome;
                     string valor;
-                    string qtd;
-                    string desc;
+                    string qtd_prod;
+                    string cor;
+                    string tamanho;
+                    string marca;
 
                     try
                     {
                         codigo = reader.GetInt32(0);
                         nome = reader.GetString(1);
-                        valor = reader.GetString(2);
-                        qtd = reader.GetString(3);
-                        desc = reader.GetString(4);
-
+                        cor = reader.GetString(2);
+                        tamanho = reader.GetString(3);
+                        preco = reader.GetDecimal(4);
+                        marca = reader.GetString(5);
+                        qtd = reader.GetInt32(6);
+                        valor = (preco).ToString();
+                        qtd_prod = (qtd).ToString();
                         id = (codigo).ToString();
 
                         txtId.Text = id;
                         txtId.ForeColor = Color.Black;
                         txtNomeProd.Text = nome;
                         txtNomeProd.ForeColor = Color.Black;
-                        txtQtdProd.Text = qtd;
+                        txtCor.Text = cor;
+                        txtCor.ForeColor = Color.Black;
+                        txtTamanho.Text = tamanho;
+                        txtTamanho.ForeColor = Color.Black;
+                        txtMarca.Text = marca;
+                        txtMarca.ForeColor = Color.Black;
+                        txtQtdProd.Text = qtd_prod;
                         txtQtdProd.ForeColor = Color.Black;
                         txtValorProd.Text = valor;
                         txtValorProd.ForeColor = Color.Black;
-                        txtDescProd.Text = desc;
-                        txtDescProd.ForeColor = Color.Black;
+
                     }
                     catch (Exception ex)
                     {
@@ -192,38 +204,52 @@ namespace ProjPTCC
             }
 
             conexao.Close();
-            
-            
+                        
         }
 
-        private void txtId_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if(!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
-        }
+        //private void txtId_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    if(!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+        //    {
+        //        e.Handled = true;
+        //    }
+        //}
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            string src =  txtId.Text;
-            string nome = "'" + txtNomeProd.Text + "'";
-            string qtd = "'" + txtQtdProd.Text + "'";
-            string valor = "'" + txtValorProd.Text + "'";
-            string desc = "'" + txtDescProd.Text + "'";
+            string src = txtId.Text;
+
+
 
             try
             {
-                string strConexao = "server=localhost; uid=root; pwd=12345678; database=viwen";
-                conexao = new MySqlConnection(strConexao);
-                string sql = "UPDATE produto SET nome_prod = " + nome + ", qtd_prod = "+ qtd + ", vl_prod = " + valor + ", desc_prod = " + desc + " WHERE id_prod = " + src;
+                string strConexao = "server=localhost; uid=root; pwd=123456789; database=viewen_db";
 
-                MySqlCommand command = new MySqlCommand(sql, conexao);
+                var conexao = new MySqlConnection(strConexao);
+                var cmd = conexao.CreateCommand();
 
                 conexao.Open();
-               
+
+                cmd.CommandText = "UPDATE produtos SET nome = @nome, cor = @cor, tamanho = @tamanho, valor = @valor, marca = @marca, qtd_prod = @qtd WHERE id = " + src;
+
+                cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = txtNomeProd.Text;
+                cmd.Parameters.Add("@cor", MySqlDbType.VarChar).Value = txtCor.Text;
+                cmd.Parameters.Add("@tamanho", MySqlDbType.VarChar).Value = txtTamanho.Text;
+                cmd.Parameters.Add("@marca", MySqlDbType.VarChar).Value = txtMarca.Text;
+                cmd.Parameters.Add("@valor", MySqlDbType.Decimal).Value = txtValorProd.Text;
+                cmd.Parameters.Add("@qtd", MySqlDbType.Int64).Value = txtQtdProd.Text;
+
+                cmd.ExecuteNonQuery();
+
+                conexao.Close();
+
+                MessageBox.Show("Item Atualizado com sucesso!");
+
+                Editar editar = new Editar();
+                editar.Show();
+                this.Hide();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -234,18 +260,28 @@ namespace ProjPTCC
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            string src = "'%" + txtId.Text + "%'";
+            string src = txtId.Text;
 
             try
             {
-                string strConexao = "server=localhost; uid=root; pwd=12345678; database=viwen";
-                conexao = new MySqlConnection(strConexao);
-                string sql = "delete from produtos where " + src ;
+                string strConexao = "server=localhost; uid=root; pwd=123456789; database=viewen_db";
 
-                MySqlCommand command = new MySqlCommand(sql, conexao);
+                var conexao = new MySqlConnection(strConexao);
+                var cmd = conexao.CreateCommand();
 
                 conexao.Open();
 
+                cmd.CommandText = "delete from produtos where id = " + src;
+
+                cmd.ExecuteNonQuery();
+
+                conexao.Close();
+
+                MessageBox.Show("Item excluido com sucesso!");
+
+                Editar editar = new Editar();
+                editar.Show();
+                this.Hide();
             }
             catch (Exception ex)
             {
@@ -260,6 +296,146 @@ namespace ProjPTCC
             telaLogin login = new telaLogin();
             login.Show();
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnConsAt_Click(object sender, EventArgs e)
+        {
+            Estoque estoque = new Estoque();
+            estoque.Show();
+            this.Hide();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Editar editar = new Editar();   
+            editar.Show();
+            this.Hide();
+        }
+
+        private void txtNomeProd_Leave(object sender, EventArgs e)
+        {
+            if (txtNomeProd.Text == "")
+            {
+                txtNomeProd.Text = "Nome do Produto";
+                txtNomeProd.ForeColor = Color.DarkGray;
+            }
+        }
+
+        private void txtCor_Leave(object sender, EventArgs e)
+        {
+            if (txtCor.Text == "")
+            {
+                txtCor.Text = "Cor";
+                txtCor.ForeColor = Color.DarkGray;
+            }
+        }
+
+        private void txtTamanho_Leave(object sender, EventArgs e)
+        {
+            if (txtTamanho.Text == "")
+            {
+                txtTamanho.Text = "Tamanho";
+                txtTamanho.ForeColor = Color.DarkGray;
+            }
+        }
+
+        private void txtMarca_Leave(object sender, EventArgs e)
+        {
+            if (txtMarca.Text == "")
+            {
+                txtMarca.Text = "Marca";
+                txtMarca.ForeColor = Color.DarkGray;
+            }
+        }
+
+        private void txtQtdProd_Leave(object sender, EventArgs e)
+        {
+            if (txtQtdProd.Text == "")
+            {
+                txtQtdProd.Text = "Quantidade";
+                txtQtdProd.ForeColor = Color.DarkGray;
+            }
+        }
+
+        private void txtValorProd_Leave(object sender, EventArgs e)
+        {
+            if (txtValorProd.Text == "")
+            {
+                txtValorProd.Text = "Valor";
+                txtValorProd.ForeColor = Color.DarkGray;
+            }
+        }
+
+        private void txtNomeProd_Enter(object sender, EventArgs e)
+        {
+            if (txtNomeProd.Text == "Nome do Produto")
+            {
+                txtNomeProd.Text = "";
+                txtNomeProd.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtCor_Enter(object sender, EventArgs e)
+        {
+            if (txtCor.Text == "Cor")
+            {
+                txtCor.Text = "";
+                txtCor.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtTamanho_Enter(object sender, EventArgs e)
+        {
+            if (txtTamanho.Text == "Tamanho")
+            {
+                txtTamanho.Text = "";
+                txtTamanho.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtMarca_Enter(object sender, EventArgs e)
+        {
+            if (txtMarca.Text == "Marca")
+            {
+                txtMarca.Text = "";
+                txtMarca.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtQtdProd_Enter(object sender, EventArgs e)
+        {
+            if (txtQtdProd.Text == "Quantidade")
+            {
+                txtQtdProd.Text = "";
+                txtQtdProd.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtValorProd_Enter(object sender, EventArgs e)
+        {
+            if (txtValorProd.Text == "Valor")
+            {
+                txtValorProd.Text = "";
+                txtValorProd.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtMarca_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPedidos_Click(object sender, EventArgs e)
+        {
+            Pedidos pedidos = new Pedidos();
+            pedidos.Show();
+            this.Hide();
+
         }
     }
 }

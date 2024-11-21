@@ -29,9 +29,11 @@ namespace ProjPTCC
 
             listaProd.Columns.Add("ID", 30, HorizontalAlignment.Left);
             listaProd.Columns.Add("Nome", 150, HorizontalAlignment.Left);
-            listaProd.Columns.Add("Quantidade", 150, HorizontalAlignment.Left);
+            listaProd.Columns.Add("Cor", 150, HorizontalAlignment.Left);
+            listaProd.Columns.Add("Tamanho", 150, HorizontalAlignment.Left);
             listaProd.Columns.Add("Valor", 150, HorizontalAlignment.Left);
-            listaProd.Columns.Add("Descrição", 300, HorizontalAlignment.Left);
+            listaProd.Columns.Add("Marca", 150, HorizontalAlignment.Left);
+            listaProd.Columns.Add("Quantidade", 150, HorizontalAlignment.Left);
         }
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -66,11 +68,10 @@ namespace ProjPTCC
         {
             try
             {
-                string strConexao = "server=localhost; uid=root; pwd=12345678; database=viwen";
+                string strConexao = "server=localhost; uid=root; pwd=123456789; database=viewen_db";
                 conexao = new MySqlConnection(strConexao);
 
-                string src = "'%" + txtPesquisa.Text + "%'";
-                string sql = "select * from produto where nome_prod like" + src;
+                string sql = "select * from produtos";
 
                 MySqlCommand command = new MySqlCommand(sql, conexao);
 
@@ -88,7 +89,9 @@ namespace ProjPTCC
                         reader.GetString(1),
                         reader.GetString(2),
                         reader.GetString(3),
-                        reader.GetString(4)
+                        Convert.ToString((decimal)reader.GetDecimal(4)),
+                        reader.GetString(5),
+                        Convert.ToString((int)reader.GetInt32(6))
                     };
 
 
@@ -96,9 +99,6 @@ namespace ProjPTCC
 
                     listaProd.Items.Add(linha_lv);
                 }
-
-
-
             }
 
             catch (Exception ex)
@@ -111,61 +111,24 @@ namespace ProjPTCC
             }
         }
 
-        private void btnBusca_Click(object sender, EventArgs e)
+        private void btnConsAt_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string strConexao = "server=localhost; uid=root; pwd=12345678; database=viwen";
-                conexao = new MySqlConnection(strConexao);                           
-
-                string src = "'%" + txtPesquisa.Text + "%'";
-                string sql = "select * from produto where nome_prod like" + src 
-                    +"or id_prod like" + src 
-                    +"or desc_prod like" + src;
-
-                MySqlCommand command = new MySqlCommand(sql, conexao);
-
-                conexao.Open();
-                    
-                MySqlDataReader reader = command.ExecuteReader();    
-
-                listaProd.Items.Clear();
-
-                while (reader.Read())
-                {
-                    string[] row =
-                    {
-                        Convert.ToString((int)reader.GetInt32(0)),
-                        reader.GetString(1),
-                        reader.GetString(2),
-                        reader.GetString(3),
-                        reader.GetString(4)
-                    };
-
-
-                    var linha_lv = new ListViewItem(row);
-
-                    listaProd.Items.Add(linha_lv);
-                }
-                
-
-
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conexao.Close();
-            }
+            Cadastro cadastro = new Cadastro();
+            cadastro.Show();
+            this.Hide();
         }
 
-        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnEditar_Click(object sender, EventArgs e)
         {
             Editar editar = new Editar();
             editar.Show();
+            this.Hide();
+        }
+
+        private void btnPedidos_Click(object sender, EventArgs e)
+        {
+            Pedidos pedidos = new Pedidos();
+            pedidos.Show();
             this.Hide();
         }
     }

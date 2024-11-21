@@ -33,7 +33,6 @@ namespace ProjPTCC
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtLogin = new System.Windows.Forms.TextBox();
-            this.btnCadastro = new System.Windows.Forms.Button();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -79,21 +78,6 @@ namespace ProjPTCC
             this.txtLogin.Enter += new System.EventHandler(this.txtLogin_Enter);
             this.txtLogin.Leave += new System.EventHandler(this.txtLogin_Leave);
             // 
-            // btnCadastro
-            // 
-            this.btnCadastro.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCadastro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.btnCadastro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnCadastro.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCadastro.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCadastro.Location = new System.Drawing.Point(403, 447);
-            this.btnCadastro.Name = "btnCadastro";
-            this.btnCadastro.Size = new System.Drawing.Size(116, 32);
-            this.btnCadastro.TabIndex = 11;
-            this.btnCadastro.Text = "Cadastre-se";
-            this.btnCadastro.UseVisualStyleBackColor = false;
-            this.btnCadastro.Click += new System.EventHandler(this.btnCadastro_Click);
-            // 
             // txtSenha
             // 
             this.txtSenha.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -114,7 +98,7 @@ namespace ProjPTCC
             this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLogin.Location = new System.Drawing.Point(525, 447);
+            this.btnLogin.Location = new System.Drawing.Point(463, 447);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(116, 32);
             this.btnLogin.TabIndex = 9;
@@ -125,7 +109,7 @@ namespace ProjPTCC
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(180)))), ((int)(((byte)(156)))));
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(412, 126);
             this.pictureBox2.Name = "pictureBox2";
@@ -141,13 +125,14 @@ namespace ProjPTCC
             this.ClientSize = new System.Drawing.Size(1034, 536);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.txtLogin);
-            this.Controls.Add(this.btnCadastro);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.pictureBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "telaLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.telaLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -161,7 +146,6 @@ namespace ProjPTCC
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtLogin;
-        private System.Windows.Forms.Button btnCadastro;
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.PictureBox pictureBox2;

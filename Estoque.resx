@@ -121,7 +121,7 @@
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAC0AAAAgACAYAAAC1/7KRAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAlA9JREFUeF7s3Gtr5EiChtH5//9wEA4SQToRgryQCJIgIHbCG+52u11VvuRFIZ0D
+        vAAADrwBlbxySQAAlA9JREFUeF7s3Gtr5EiChtH5//9wEA4SQToRgryQCJIgIHbCG+52u11VvuRFIZ0D
         D/thZ7ZrXc4kJN6O//z3v//NkiRJkiRJj2y322UAAAAAAACAzzCAliRJkiRJDy/GWF9VAAAAAAAAAPye
         AbQkSZIkSXpofd/X1xQAAAAAAAAAf2YALUmSJEmSHtr5fK6vKQAAAAAAAAD+zABakiRJkiQ9rBBCfUUB
         AAAAAAAA8DkG0JIkSZIk6WGdTqf6igIAAAAAAADgcwygJUmSJEnSw4ox1lcUAAAAAAAAAJ9jAC1JkiRJ
@@ -756,10 +756,7 @@
         ycK6nKEAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="logoToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pictureBox3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA5oAAAOaCAYAAAD59S2LAAAABGdBTUEAALGPC/xhBQAA/8dJREFUeF7s
         nQecJEd9/adznLC7F5UQiCxyNCByTgKDyTnn7D/JRIMxwSYaE02wCTYiJwswIEQQCCRAgBASklBAOZ4u

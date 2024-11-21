@@ -20,8 +20,6 @@ namespace ProjPTCC
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            telaLogin login = new telaLogin();
-            login.Show();
             this.Hide();
         }
 
@@ -29,18 +27,17 @@ namespace ProjPTCC
         {
             try
             {
-                string strConexao = "server=localhost; uid=root; pwd=12345678; database=viwen";
+                string strConexao = "server=localhost; uid=root; pwd=123456789; database=viewen_db";
                 var conexao = new MySqlConnection(strConexao);
                 var cmd = conexao.CreateCommand();
                 conexao.Open();
-                cmd.CommandText = "INSERT INTO login(login_user,senha_user) VALUES(?login,?senha)";
-                cmd.Parameters.Add("?login", MySqlDbType.VarChar).Value = txtLoginCad.Text;
-                cmd.Parameters.Add("?senha", MySqlDbType.VarChar).Value = txtSenhaCad.Text;
+                cmd.CommandText = "INSERT INTO usuarios(nome,email,senha) VALUES(@nome,@login,@senha)";
+                cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = txtNome.Text;
+                cmd.Parameters.Add("@login", MySqlDbType.VarChar).Value = txtLoginCad.Text;
+                cmd.Parameters.Add("@senha", MySqlDbType.VarChar).Value = txtSenhaCad.Text;
                 cmd.ExecuteNonQuery();
                 conexao.Close();
                 MessageBox.Show("Cadastro realizado com sucesso");
-                telaLogin login = new telaLogin();
-                login.Show();
                 this.Hide();
             }
             catch (Exception ex) 
@@ -51,7 +48,7 @@ namespace ProjPTCC
         }
         private void txtLoginCad_Enter(object sender, EventArgs e)
         {
-            if (txtLoginCad.Text == "Nome Usuário")
+            if (txtLoginCad.Text == "Insira o E-mail")
             {
                 txtLoginCad.Text = "";
                 txtLoginCad.ForeColor = Color.Black;
@@ -62,14 +59,14 @@ namespace ProjPTCC
         {
             if (txtLoginCad.Text == "")
             {
-                txtLoginCad.Text = "Nome Completo";
+                txtLoginCad.Text = "Insira o E-mail";
                 txtLoginCad.ForeColor = Color.DarkGray;
             }
         }
 
         private void txtSenhaCad_Enter(object sender, EventArgs e)
         {
-            if (txtSenhaCad.Text == "Senha")
+            if (txtSenhaCad.Text == "Insira a Senha")
             {
                 txtSenhaCad.Text = "";
                 txtSenhaCad.UseSystemPasswordChar = true;
@@ -81,7 +78,7 @@ namespace ProjPTCC
         {
             if (txtSenhaCad.Text == "")
             {
-                txtSenhaCad.Text = "Senha";
+                txtSenhaCad.Text = "Insira a Senha";
                 txtSenhaCad.UseSystemPasswordChar = false;
                 txtSenhaCad.ForeColor = Color.DarkGray;
             }
@@ -90,6 +87,24 @@ namespace ProjPTCC
         private void CadastroUser_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtNome_Enter(object sender, EventArgs e)
+        {
+            if (txtNome.Text == "Insira o Nome Completo")
+            {
+                txtNome.Text = "";
+                txtNome.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtNome_Leave(object sender, EventArgs e)
+        {
+            if (txtNome.Text == "")
+            {
+                txtNome.Text = "Insira o Nome Completo";
+                txtNome.ForeColor = Color.DarkGray;
+            }
         }
     }
 }

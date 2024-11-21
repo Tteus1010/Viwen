@@ -31,21 +31,23 @@ namespace ProjPTCC
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cadastro));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.logoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtNomeProd = new System.Windows.Forms.TextBox();
             this.txtValorProd = new System.Windows.Forms.TextBox();
             this.txtQtdProd = new System.Windows.Forms.TextBox();
-            this.txtDescProd = new System.Windows.Forms.TextBox();
-            this.btnFechar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtMarca = new System.Windows.Forms.TextBox();
+            this.txtCor = new System.Windows.Forms.TextBox();
+            this.txtTamanho = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnConsAt = new System.Windows.Forms.Button();
+            this.listaProd = new System.Windows.Forms.ListView();
+            this.btnPedidos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.menuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -61,56 +63,17 @@ namespace ProjPTCC
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logoToolStripMenuItem,
-            this.inicioToolStripMenuItem,
-            this.cadastroToolStripMenuItem,
-            this.estoqueToolStripMenuItem,
-            this.editarToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1034, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // logoToolStripMenuItem
-            // 
-            this.logoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("logoToolStripMenuItem.Image")));
-            this.logoToolStripMenuItem.Name = "logoToolStripMenuItem";
-            this.logoToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
-            // 
-            // inicioToolStripMenuItem
-            // 
-            this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
-            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.inicioToolStripMenuItem.Text = "Inicio";
-            this.inicioToolStripMenuItem.Click += new System.EventHandler(this.inicioToolStripMenuItem_Click);
-            // 
-            // cadastroToolStripMenuItem
-            // 
-            this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
-            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.cadastroToolStripMenuItem.Text = "Cadastro";
-            this.cadastroToolStripMenuItem.Click += new System.EventHandler(this.cadastroToolStripMenuItem_Click);
-            // 
-            // estoqueToolStripMenuItem
-            // 
-            this.estoqueToolStripMenuItem.Name = "estoqueToolStripMenuItem";
-            this.estoqueToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.estoqueToolStripMenuItem.Text = "Estoque";
-            this.estoqueToolStripMenuItem.Click += new System.EventHandler(this.estoqueToolStripMenuItem_Click);
-            // 
             // txtNomeProd
             // 
-            this.txtNomeProd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtNomeProd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNomeProd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.txtNomeProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeProd.ForeColor = System.Drawing.Color.DarkGray;
-            this.txtNomeProd.Location = new System.Drawing.Point(252, 258);
+            this.txtNomeProd.Location = new System.Drawing.Point(274, 132);
             this.txtNomeProd.Name = "txtNomeProd";
-            this.txtNomeProd.Size = new System.Drawing.Size(271, 26);
+            this.txtNomeProd.Size = new System.Drawing.Size(200, 26);
             this.txtNomeProd.TabIndex = 2;
             this.txtNomeProd.Text = "Nome do Produto";
             this.txtNomeProd.Enter += new System.EventHandler(this.txtNomeProd_Enter);
@@ -118,13 +81,15 @@ namespace ProjPTCC
             // 
             // txtValorProd
             // 
-            this.txtValorProd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtValorProd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtValorProd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.txtValorProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorProd.ForeColor = System.Drawing.Color.DarkGray;
-            this.txtValorProd.Location = new System.Drawing.Point(668, 258);
+            this.txtValorProd.Location = new System.Drawing.Point(699, 132);
             this.txtValorProd.Name = "txtValorProd";
-            this.txtValorProd.Size = new System.Drawing.Size(100, 26);
+            this.txtValorProd.Size = new System.Drawing.Size(86, 26);
             this.txtValorProd.TabIndex = 3;
             this.txtValorProd.Text = "Valor";
             this.txtValorProd.Enter += new System.EventHandler(this.txtValorProd_Enter);
@@ -132,51 +97,28 @@ namespace ProjPTCC
             // 
             // txtQtdProd
             // 
-            this.txtQtdProd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtQtdProd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtQtdProd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.txtQtdProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQtdProd.ForeColor = System.Drawing.Color.DarkGray;
-            this.txtQtdProd.Location = new System.Drawing.Point(529, 258);
+            this.txtQtdProd.Location = new System.Drawing.Point(924, 132);
             this.txtQtdProd.Name = "txtQtdProd";
-            this.txtQtdProd.Size = new System.Drawing.Size(133, 26);
+            this.txtQtdProd.Size = new System.Drawing.Size(98, 26);
             this.txtQtdProd.TabIndex = 4;
             this.txtQtdProd.Text = "Quantidade";
             this.txtQtdProd.Enter += new System.EventHandler(this.txtQtdProd_Enter);
             this.txtQtdProd.Leave += new System.EventHandler(this.txtQtdProd_Leave);
             // 
-            // txtDescProd
-            // 
-            this.txtDescProd.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtDescProd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.txtDescProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescProd.ForeColor = System.Drawing.Color.DarkGray;
-            this.txtDescProd.Location = new System.Drawing.Point(184, 290);
-            this.txtDescProd.Name = "txtDescProd";
-            this.txtDescProd.Size = new System.Drawing.Size(584, 26);
-            this.txtDescProd.TabIndex = 5;
-            this.txtDescProd.Text = "Descrição";
-            this.txtDescProd.Enter += new System.EventHandler(this.txtDescProd_Enter);
-            this.txtDescProd.Leave += new System.EventHandler(this.txtDescProd_Leave);
-            // 
-            // btnFechar
-            // 
-            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFechar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(223)))), ((int)(((byte)(175)))));
-            this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnFechar.Location = new System.Drawing.Point(883, 490);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(139, 34);
-            this.btnFechar.TabIndex = 6;
-            this.btnFechar.Text = "Encerrar";
-            this.btnFechar.UseVisualStyleBackColor = false;
-            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
-            // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCadastrar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCadastrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.btnCadastrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCadastrar.Location = new System.Drawing.Point(657, 322);
+            this.btnCadastrar.Location = new System.Drawing.Point(911, 490);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(111, 31);
             this.btnCadastrar.TabIndex = 7;
@@ -186,11 +128,13 @@ namespace ProjPTCC
             // 
             // txtId
             // 
-            this.txtId.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtId.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtId.ForeColor = System.Drawing.Color.DarkGray;
-            this.txtId.Location = new System.Drawing.Point(184, 258);
+            this.txtId.Location = new System.Drawing.Point(206, 132);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(62, 26);
@@ -198,35 +142,150 @@ namespace ProjPTCC
             this.txtId.Text = "ID";
             this.txtId.Leave += new System.EventHandler(this.txtId_Leave);
             // 
-            // editarToolStripMenuItem
+            // txtMarca
             // 
-            this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.editarToolStripMenuItem.Text = "Editar";
-            this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
+            this.txtMarca.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMarca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.txtMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMarca.ForeColor = System.Drawing.Color.DarkGray;
+            this.txtMarca.Location = new System.Drawing.Point(791, 132);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(127, 26);
+            this.txtMarca.TabIndex = 9;
+            this.txtMarca.Text = "Marca";
+            this.txtMarca.Enter += new System.EventHandler(this.txtMarca_Enter);
+            this.txtMarca.Leave += new System.EventHandler(this.txtMarca_Leave);
+            // 
+            // txtCor
+            // 
+            this.txtCor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.txtCor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCor.ForeColor = System.Drawing.Color.DarkGray;
+            this.txtCor.Location = new System.Drawing.Point(480, 132);
+            this.txtCor.Name = "txtCor";
+            this.txtCor.Size = new System.Drawing.Size(83, 26);
+            this.txtCor.TabIndex = 11;
+            this.txtCor.Text = "Cor";
+            this.txtCor.Enter += new System.EventHandler(this.txtCor_Enter);
+            this.txtCor.Leave += new System.EventHandler(this.txtCor_Leave);
+            // 
+            // txtTamanho
+            // 
+            this.txtTamanho.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTamanho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.txtTamanho.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTamanho.ForeColor = System.Drawing.Color.DarkGray;
+            this.txtTamanho.Location = new System.Drawing.Point(569, 132);
+            this.txtTamanho.Name = "txtTamanho";
+            this.txtTamanho.Size = new System.Drawing.Size(124, 26);
+            this.txtTamanho.TabIndex = 12;
+            this.txtTamanho.Text = "Tamanho";
+            this.txtTamanho.Enter += new System.EventHandler(this.txtTamanho_Enter);
+            this.txtTamanho.Leave += new System.EventHandler(this.txtTamanho_Leave);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.Controls.Add(this.btnPedidos);
+            this.panel1.Controls.Add(this.pictureBox3);
+            this.panel1.Controls.Add(this.btnEditar);
+            this.panel1.Controls.Add(this.btnConsAt);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(169, 538);
+            this.panel1.TabIndex = 14;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(169, 158);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 15;
+            this.pictureBox3.TabStop = false;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnEditar.Location = new System.Drawing.Point(12, 306);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(146, 68);
+            this.btnEditar.TabIndex = 10;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnConsAt
+            // 
+            this.btnConsAt.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnConsAt.Location = new System.Drawing.Point(12, 232);
+            this.btnConsAt.Name = "btnConsAt";
+            this.btnConsAt.Size = new System.Drawing.Size(146, 68);
+            this.btnConsAt.TabIndex = 9;
+            this.btnConsAt.Text = "Consulta";
+            this.btnConsAt.UseVisualStyleBackColor = true;
+            this.btnConsAt.Click += new System.EventHandler(this.btnConsAt_Click);
+            // 
+            // listaProd
+            // 
+            this.listaProd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listaProd.HideSelection = false;
+            this.listaProd.Location = new System.Drawing.Point(206, 164);
+            this.listaProd.Name = "listaProd";
+            this.listaProd.Size = new System.Drawing.Size(816, 320);
+            this.listaProd.TabIndex = 18;
+            this.listaProd.UseCompatibleStateImageBehavior = false;
+            // 
+            // btnPedidos
+            // 
+            this.btnPedidos.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnPedidos.Location = new System.Drawing.Point(12, 380);
+            this.btnPedidos.Name = "btnPedidos";
+            this.btnPedidos.Size = new System.Drawing.Size(146, 68);
+            this.btnPedidos.TabIndex = 16;
+            this.btnPedidos.Text = "Pedidos";
+            this.btnPedidos.UseVisualStyleBackColor = true;
+            this.btnPedidos.Click += new System.EventHandler(this.btnPedidos_Click);
             // 
             // Cadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 536);
+            this.Controls.Add(this.listaProd);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.txtTamanho);
+            this.Controls.Add(this.txtCor);
+            this.Controls.Add(this.txtMarca);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.btnCadastrar);
-            this.Controls.Add(this.btnFechar);
-            this.Controls.Add(this.txtDescProd);
             this.Controls.Add(this.txtQtdProd);
             this.Controls.Add(this.txtValorProd);
             this.Controls.Add(this.txtNomeProd);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pictureBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Cadastro";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro";
             this.Load += new System.EventHandler(this.Cadastro_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,18 +294,19 @@ namespace ProjPTCC
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem logoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem inicioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cadastroToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem estoqueToolStripMenuItem;
         private System.Windows.Forms.TextBox txtNomeProd;
         private System.Windows.Forms.TextBox txtValorProd;
         private System.Windows.Forms.TextBox txtQtdProd;
-        private System.Windows.Forms.TextBox txtDescProd;
-        private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtMarca;
+        private System.Windows.Forms.TextBox txtCor;
+        private System.Windows.Forms.TextBox txtTamanho;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnConsAt;
+        private System.Windows.Forms.ListView listaProd;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button btnPedidos;
     }
 }

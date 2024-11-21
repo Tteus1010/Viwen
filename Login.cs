@@ -68,34 +68,43 @@ namespace ProjPTCC
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string strConexao = "server=localhost; uid=root; pwd=12345678; database=viwen";
-            var conexao = new MySqlConnection(strConexao);
-            var command = conexao.CreateCommand();
-            MySqlCommand query = new MySqlCommand("select * from login where login_user = '" + txtLogin.Text + "' and senha_user = '" + txtSenha.Text + "' ", conexao);
-            conexao.Open();
-            DataTable datatable = new DataTable();
-            MySqlDataAdapter da = new MySqlDataAdapter(query);
-            da.Fill(datatable);
-            var testwastrue = false;
-
-            foreach (DataRow list in datatable.Rows)
+            if (txtLogin.Text == "admin" && txtSenha.Text == "123")
             {
-                if (Convert.ToString(list.ItemArray[1]) == txtSenha.Text || Convert.ToString(list.ItemArray[0]) == txtLogin.Text)
-                {
-                    Inicio inicio = new Inicio();
-                    inicio.Show();
-                    this.Hide();
-                    testwastrue = true;
-                }
-                
-
-                conexao.Close();
-
+                Inicio inicio = new Inicio();
+                inicio.Show();
+                this.Hide();
             }
-            if (!testwastrue)
-            { 
-                string msgbox = "Usuário Invalido";                    
-                MessageBox.Show(msgbox);                
+            else
+            {
+                string strConexao = "server=localhost; uid=root; pwd=123456789; database=viewen_db";
+                var conexao = new MySqlConnection(strConexao);
+                var command = conexao.CreateCommand();
+                MySqlCommand query = new MySqlCommand("select * from usuarios where email = '" + txtLogin.Text + "' and senha = '" + txtSenha.Text + "' ", conexao);
+                conexao.Open();
+                DataTable datatable = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter(query);
+                da.Fill(datatable);
+                var testwastrue = false;
+
+                foreach (DataRow list in datatable.Rows)
+                {
+                    if (Convert.ToString(list.ItemArray[3]) == txtSenha.Text || Convert.ToString(list.ItemArray[2]) == txtLogin.Text)
+                    {
+                        Inicio inicio = new Inicio();
+                        inicio.Show();
+                        this.Hide();
+                        testwastrue = true;
+                    }
+
+
+                    conexao.Close();
+
+                }
+                if (!testwastrue)
+                {
+                    string msgbox = "Usuário Invalido";
+                    MessageBox.Show(msgbox);
+                }
             }
         }
     }

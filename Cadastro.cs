@@ -53,15 +53,18 @@ namespace ProjPTCC
         {
             try
             {
-                string strConexao = "server=localhost; uid=root; pwd=12345678; database=viwen";
+                string strConexao = "server=localhost; uid=root; pwd=123456789; database=viewen_db";
                 var conexao = new MySqlConnection(strConexao);
                 var cmd = conexao.CreateCommand();
                 conexao.Open();
-                cmd.CommandText = "INSERT INTO produto(nome_prod, qtd_prod, vl_prod, desc_prod) VALUES(?nome, ?qtd, ?valor, ?desc)";
-                cmd.Parameters.Add("?nome", MySqlDbType.VarChar).Value = txtNomeProd.Text;
-                cmd.Parameters.Add("?valor", MySqlDbType.VarChar).Value = txtValorProd.Text;
-                cmd.Parameters.Add("?qtd", MySqlDbType.VarChar).Value = txtQtdProd.Text;
-                cmd.Parameters.Add("?desc", MySqlDbType.VarChar).Value = txtDescProd.Text;
+                cmd.CommandText = "INSERT INTO produtos(nome, cor, tamanho, valor, marca, qtd_prod)" +
+                    " VALUES(@nome, @cor, @tamanho, @valor, @marca, @qtd)";
+                cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = txtNomeProd.Text;
+                cmd.Parameters.Add("@cor", MySqlDbType.VarChar).Value = txtCor.Text;
+                cmd.Parameters.Add("@tamanho", MySqlDbType.VarChar).Value = txtTamanho.Text;
+                cmd.Parameters.Add("@marca", MySqlDbType.VarChar).Value = txtMarca.Text;
+                cmd.Parameters.Add("@valor", MySqlDbType.Decimal).Value = txtValorProd.Text;
+                cmd.Parameters.Add("@qtd", MySqlDbType.Int64).Value = txtQtdProd.Text;
                 cmd.ExecuteNonQuery();
                 conexao.Close();
                 MessageBox.Show("Item Cadastrado com sucesso!");
@@ -133,34 +136,16 @@ namespace ProjPTCC
             }
         }
 
-        private void txtDescProd_Enter(object sender, EventArgs e)
-        {
-           if(txtDescProd.Text == "Descrição")
-            {
-                txtDescProd.Text = "";
-                txtDescProd.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtDescProd_Leave(object sender, EventArgs e)
-        {
-            if(txtDescProd.Text == "")
-            {
-                txtDescProd.Text = "Descrição";
-                txtDescProd.ForeColor = Color.DarkGray;
-            }
-        }
-
         private void Cadastro_Load(object sender, EventArgs e)
         {
             int codigo = 0;
             string valor;
-            string strConexao = "server=localhost; uid=root; pwd=12345678; database=viwen";
+            string strConexao = "server=localhost; uid=root; pwd=123456789; database=viewen_db";
             var conexao = new MySqlConnection(strConexao);
             conexao.Open();
             try
             {
-                MySqlCommand sql = new MySqlCommand("Select MAX(id_prod) From produto", conexao);
+                MySqlCommand sql = new MySqlCommand("Select MAX(id) From produtos", conexao);
                 codigo = (int)sql.ExecuteScalar();
             }
             catch (SqlException ex)
@@ -177,6 +162,86 @@ namespace ProjPTCC
         {
             Editar editar = new Editar();
             editar.Show();
+            this.Hide();
+        }
+
+        private void btnCadAt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnConsAt_Click(object sender, EventArgs e)
+        {
+            Estoque estoque = new Estoque();
+            estoque.Show();
+            this.Hide();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Editar editar = new Editar();
+            editar.Show();
+            this.Hide();
+        }
+
+        private void txtCor_Enter(object sender, EventArgs e)
+        {
+            if (txtCor.Text == "Cor")
+            {
+                txtCor.Text = "";
+                txtCor.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtCor_Leave(object sender, EventArgs e)
+        {
+            if (txtCor.Text == "")
+            {
+                txtCor.Text = "Cor";
+                txtCor.ForeColor = Color.DarkGray;
+            }
+        }
+
+        private void txtTamanho_Leave(object sender, EventArgs e)
+        {
+            if (txtTamanho.Text == "")
+            {
+                txtTamanho.Text = "Tamanho";
+                txtTamanho.ForeColor = Color.DarkGray;
+            }
+        }
+
+        private void txtTamanho_Enter(object sender, EventArgs e)
+        {
+            if (txtTamanho.Text == "Tamanho")
+            {
+                txtTamanho.Text = "";
+                txtTamanho.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtMarca_Leave(object sender, EventArgs e)
+        {
+            if (txtMarca.Text == "")
+            {
+                txtMarca.Text = "Marca";
+                txtMarca.ForeColor = Color.DarkGray;
+            }
+        }
+
+        private void txtMarca_Enter(object sender, EventArgs e)
+        {
+            if (txtMarca.Text == "Marca")
+            {
+                txtMarca.Text = "";
+                txtMarca.ForeColor = Color.Black;
+            }
+        }
+
+        private void btnPedidos_Click(object sender, EventArgs e)
+        {
+            Pedidos pedidos = new Pedidos();
+            pedidos.Show();
             this.Hide();
         }
     }

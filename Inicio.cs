@@ -49,21 +49,45 @@ namespace ProjPTCC
         {
             Cadastro cadastro = new Cadastro();
             cadastro.Show();
-            this.Hide();
         }
 
         private void btnConsAt_Click(object sender, EventArgs e)
         {
             Estoque estoque = new Estoque();
             estoque.Show();
-            this.Hide();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
             Editar editar = new Editar();
             editar.Show();
-            this.Hide();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CadastroUser cadastro = new CadastroUser();
+            cadastro.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Inicio_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnPedidos_Click(object sender, EventArgs e)
+        {
+            Pedidos pedidos = new Pedidos();
+            pedidos.Show();
         }
     }
 }
